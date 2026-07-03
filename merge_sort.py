@@ -1,11 +1,11 @@
-from utilis import StepRecorder
+from utils import StepRecorder
 
 
 def merge_sort_steps(array):
 
     # this formula is only for quick sort and merge sort
     length = len(array)
-    if length < 100:
+    if length <= 250:
         interval = 1
     else:
         interval = max(1, length // 2)
@@ -15,35 +15,42 @@ def merge_sort_steps(array):
     recorder.record(array, [], force=True)
     current = array.copy()
     start = 0
-
-    def merge_sort(array, start):
-        # merge function
-        def merge(left, right):
-            result = []
-            i, j = 0, 0
-
-            while i < len(left) and j < len(right):
-                if left[i] < right[j]:
-                    result.append(left[i])
-                    i += 1
-                else:
-                    result.append(right[j])
-                    j += 1
-            return result + left[i:] + right[j:]
-
-        if len(array) <= 1:
-            return array
-        else:
-            mid = len(array) // 2
-            left = array[:mid]
-            right = array[mid:]
-            left = merge_sort(left, start)
-            right = merge_sort(right, start + mid)
-            final = merge(left, right)
-            current[start : start + len(final)] = final
-            recorder.record(current, [i for i in range(start, start + len(final))])
-            return final
     
-    merge_sort(array, start)
+        
+    def merge(arr, start, mid, end):
+        i = start
+        j = mid + 1
+        temp = []
+        while i <= mid and j <= end:
+            if arr[j] < arr[i]:
+                temp.append(arr[j])
+                j += 1
+            else:
+                temp.append(arr[i])
+                i += 1
+                
+        while i <= mid:
+            temp.append(arr[i])
+            i += 1
+            
+        while j <= end:
+            temp.append(arr[j])
+            j += 1
+            
+        
+        for k in range(start, end + 1):
+            arr[k] = temp[k - start]
+            recorder.record(arr, [k])
+                
+    def merge_sort(arr, start, end):
+        if start < end:
+            mid = (start + end) // 2
+            merge_sort(arr, start, mid)
+            merge_sort(arr, mid + 1, end)
+            merge(arr, start, mid, end)
+            
+    merge_sort(current, 0, len(current)- 1)   
+     
     recorder.record(current, [], force=True)
+    
     return recorder.steps

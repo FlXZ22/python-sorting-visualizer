@@ -1,35 +1,37 @@
-from utilis import StepRecorder
-
+from utils import StepRecorder
 
 def quick_sort_steps(array):
-
-    # this formula is only for quick sort and merge sort
     length = len(array)
-    if length < 100:
+    if length <= 250:
         interval = 1
     else:
         interval = max(1, length // 2)
-
+        
     recorder = StepRecorder(array, step_interval=interval)
     recorder.record(array, [], force=True)
-    current = array.copy()
+    current  = array.copy()
+    
+    def partition(arr, start, end):
+        pivot = arr[start]
+        i = start
+        
+        for j in range(start + 1, end + 1):
+            if arr[j] < pivot:
+                i += 1
+                arr[j], arr[i] = arr[i], arr[j]
+                recorder.record(arr,[i, j])
+        arr[start], arr[i] = arr[i], arr[start]
+        recorder.record(arr, [start, i])
+        return i
 
-    def quick_sort(arr, start):
-        if len(arr) <= 1:
-            return arr
-
-        pivot = arr[0]
-        left = [x for x in arr[1:] if x < pivot]
-        right = [x for x in arr[1:] if x >= pivot]
-
-        sorted_left = quick_sort(left, start)
-        sorted_right = quick_sort(right, start + len(sorted_left) + 1)
-
-        result = sorted_left + [pivot] + sorted_right
-        current[start : start + len(result)] = result
-        recorder.record(current, [i for i in range(start, start + len(result))])
-        return result
-
-    quick_sort(current, 0)
-    recorder.record(current, [], force=True)
+    def quick_sort(array, start, end):
+        if start < end:
+            pivot_index = partition(array, start, end)
+            quick_sort(array, start , pivot_index -1)
+            quick_sort(array, pivot_index + 1, end)
+    
+    quick_sort(current, 0, len(current) -1)
+    
+    recorder.record(current, [], force= True)
+    
     return recorder.steps

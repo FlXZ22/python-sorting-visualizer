@@ -1,4 +1,4 @@
-from utilis import StepRecorder
+from utils import StepRecorder
 
 
 def selection_sort_steps(array):

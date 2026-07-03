@@ -1,4 +1,4 @@
-from utilis import StepRecorder
+from utils import StepRecorder
 
 
 def bubble_sort_steps(array):
@@ -24,6 +24,7 @@ def bubble_sort_steps(array):
 
         if not swapped:
             return recorder.steps
+        
     recorder.record(array, [], force=True)
 
     return recorder.steps

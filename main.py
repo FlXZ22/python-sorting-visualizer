@@ -303,7 +303,7 @@ def render_frames(steps, key, title, n, speed):
                 xanchor="left",
                 yanchor="top",
                 bgcolor="#F4EFE1",
-                bordercolor="black",
+                bordercolor="#333333",
                 borderwidth=1,
                 pad={"r": 16, "t": 16, "l": 16, "b": 16},
                 font=dict(family="Press Start 2P, system-ui", size=11, color="black"),
@@ -314,7 +314,7 @@ def render_frames(steps, key, title, n, speed):
                         args=[
                             None,
                             {
-                                "frame": {"duration": 1000 // speed},
+                                "frame": {"duration": 1000 // speed, "redraw" : True},
                                 "transition": {"duration": 0},
                                 "fromcurrent": True,
                             },
