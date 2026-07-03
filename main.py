@@ -1,9 +1,11 @@
-import streamlit as st
 import time
+import random
+
+import streamlit as st
+import plotly.graph_objects as go
+
 from merge_sort import merge_sort_steps
 from bubble_sort import bubble_sort_steps
-import random
-import plotly.graph_objects as go
 from quick_sort import quick_sort_steps
 from selection_sort import selection_sort_steps
 
