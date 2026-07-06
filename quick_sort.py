@@ -10,17 +10,23 @@ def quick_sort_steps(array):
     recorder = StepRecorder(array, step_interval=interval)
     recorder.record(array, [], force=True)
     current  = array.copy()
+    comparisons = 0
+    swaps = 0
     
     def partition(arr, start, end):
+        nonlocal comparisons, swaps
         pivot = arr[start]
         i = start
         
         for j in range(start + 1, end + 1):
+            comparisons += 1
             if arr[j] < pivot:
                 i += 1
                 arr[j], arr[i] = arr[i], arr[j]
+                swaps += 1
                 recorder.record(arr,[i, j])
         arr[start], arr[i] = arr[i], arr[start]
+        swaps += 1
         recorder.record(arr, [start, i])
         return i
 
@@ -34,4 +40,4 @@ def quick_sort_steps(array):
     
     recorder.record(current, [], force= True)
     
-    return recorder.steps
+    return recorder.steps, comparisons, swaps

@@ -1,5 +1,6 @@
 import time
 import random
+import math
 
 import streamlit as st
 import plotly.graph_objects as go
@@ -9,181 +10,18 @@ from bubble_sort import bubble_sort_steps
 from quick_sort import quick_sort_steps
 from selection_sort import selection_sort_steps
 
+
 if "n" not in st.session_state:
     st.session_state.n = []
 if "algo" not in st.session_state:
     st.session_state.algo = None
 
-st.markdown(
-    """
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-.title {
-    background: #2e2e2e;
-    font-family: "Press Start 2P", system-ui !important;
-    font-size: 24px !important;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
-}
+def load_css(path: str) ->None:
+    with open(path) as f:
+        css = f.read()
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
-.st-key-bubble button {
-    background-color: #6abc3a !important;
-    color: #fff !important;
-    padding: 15px 40px !important;
-    margin: 10px !important;
-    font-size: 14px !important;
-    font-family: 'Press Start 2P', system-ui !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        0px 10px #00000038,
-        5px 5px #00000038,
-        -5px 5px #00000038,
-        inset 0px 5px #ffffff36 !important;
-    cursor: pointer !important;
-}
-
-.st-key-bubble button:active {
-    transform: translateY(5px);
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        inset 0px 5px #00000038 !important;
-}
-
-.st-key-merge button {
-    background-color: #d83433 !important;
-    color: #fff !important;
-    padding: 15px 40px !important;
-    margin: 10px !important;
-    font-size: 14px !important;
-    font-family: 'Press Start 2P', system-ui !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        0px 10px #00000038,
-        5px 5px #00000038,
-        -5px 5px #00000038,
-        inset 0px 5px #ffffff36 !important;
-    cursor: pointer !important;
-}
-
-.st-key-merge button:active {
-    transform: translateY(5px);
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        inset 0px 5px #00000038 !important;
-}
-.st-key-generate button {
-    background-color: #38667f !important;
-    color: #fff !important;
-    padding: 15px 40px !important;
-    margin: 10px !important;
-    font-size: 14px !important;
-    font-family: 'Press Start 2P', system-ui !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        0px 10px #00000038, 
-        5px 5px #00000038,
-        -5px 5px #00000038,
-        inset 0px 5px #ffffff36 !important;
-    cursor: pointer !important;
-}
-
-.st-key-generate button:active {
-    transform: translateY(5px);
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        inset 0px 5px #00000038 !important;
-}
-.st-key-quick button {
-    background-color: #9f7db1 !important;
-    color: #fff !important;
-    padding: 15px 40px !important;
-    margin: 10px !important;
-    font-size: 14px !important;
-    font-family: 'Press Start 2P', system-ui !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        0px 10px #00000038, 
-        5px 5px #00000038,
-        -5px 5px #00000038,
-        inset 0px 5px #ffffff36 !important;
-    cursor: pointer !important;
-}
-.st-key-quick button:active {
-    transform: translateY(5px);
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        inset 0px 5px #00000038 !important;
-}
-
-.st-key-selection button {
-    background-color: #009688 !important;
-    color: #fff !important;
-    padding: 15px 40px !important;
-    margin: 10px !important;
-    font-size: 14px !important;
-    font-family: 'Press Start 2P', system-ui !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        0px 10px #00000038, 
-        5px 5px #00000038,
-        -5px 5px #00000038,
-        inset 0px 5px #ffffff36 !important;
-    cursor: pointer !important;
-}
-.st-key-selection button:active {
-    transform: translateY(5px);
-    box-shadow:
-        0px 5px black,
-        0px -5px black,
-        5px 0px black,
-        -5px 0px black,
-        inset 0px 5px #00000038 !important;
-}
-
-p, h1, h2, h3, label, button, input {
-    font-family: 'Press Start 2P', system-ui !important;
-}
-
-</style>
-""",
-    unsafe_allow_html=True,
-)
+load_css("styles.css")
 
 # Title
 st.markdown(
@@ -253,7 +91,7 @@ speed = st.slider("Speed: ", 1, 50, 5)
 
 
 def render_frames(steps, key, title, n, speed):
-    def colors_for_step(step, default_color="#009688", highlight_color="#d83433"):
+    def colors_for_step(step, default_color="#009688", highlight_color="#8333d8"):
         # apply the highlights color to the highlights indices and apply the default color to the rest in range(len(step["array"]))
         colors = [
             highlight_color if i in step["highlight_indices"] else default_color
@@ -304,7 +142,7 @@ def render_frames(steps, key, title, n, speed):
                 y=-0.2,
                 xanchor="left",
                 yanchor="top",
-                bgcolor="#F4EFE1",
+                bgcolor="#FFFFFF",
                 bordercolor="#333333",
                 borderwidth=1,
                 pad={"r": 16, "t": 16, "l": 16, "b": 16},
@@ -331,21 +169,54 @@ def render_frames(steps, key, title, n, speed):
 
 
 def run_algorithm(name, sort_function, speed, n, key):
+    
+    def log(n):
+        if n == 0:
+            return n ** 2, n
+        n_squared = n ** 2
+        n_log_n = n * math.log2(n)
+        return n_squared, n_log_n
 
     st.write(f"{name} sort started...")
     start_time = time.perf_counter()
-    steps = sort_function(n.copy())
+    steps, comparisons, swaps = sort_function(n.copy())
     end_time = time.perf_counter()
     st.success(
-        f"The {name} sort algorithm finished in {end_time - start_time:.6f} seconds"
+        f"The algorithm time is: {end_time - start_time:.6f} seconds"
     )
 
     render_frames(steps, f"{key}_{hash(tuple(n))}", f"{name} Sort", n, speed)
 
     animation_time = len(steps) * (1000 // speed) / 1000
-    st.info(f"The animation finished in {animation_time:.6f} seconds")
-
-
+    size = len(n)
+    n_sqared, n_log_n = log(size)
+    
+    st.info(f"The animation time is: {animation_time:.6f} seconds")
+       
+    st.markdown(f'''
+        <div class="card">
+    <div class="card__title">{name} Sort</div>
+    <div class="card__data">
+        <div class="card__right">
+        <div class="item">Comparisons</div>
+        <div class="item">Swaps</div>
+        <div class="item">n sqared</div>
+        <div class="item">n log</div>
+        </div>
+        <div class="card__left">
+        <div class="item">{comparisons}</div>
+        <div class="item">{swaps}</div>
+        <div class="item">{n_sqared}</div>
+        <div class="item">{n_log_n}</div>
+        </div>
+    </div>
+    </div>
+    <br>    
+                ''', unsafe_allow_html=True,)     
+    
+    st.markdown("If the number of comparisons is closer to n sqared then the algorithm is quadratic, else if it is closer to the log then it's logarithmic")    
+    if st.button(f"Learn how {name} sort actually work", key="link", use_container_width=True):
+        st.switch_page("pages/info.py")
 def draw_sort(n):
     # Create col
     # ums for the buttons

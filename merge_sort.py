@@ -14,14 +14,17 @@ def merge_sort_steps(array):
 
     recorder.record(array, [], force=True)
     current = array.copy()
-    start = 0
+    comparisons = 0
+    swaps = 0
     
         
     def merge(arr, start, mid, end):
+        nonlocal comparisons, swaps
         i = start
         j = mid + 1
         temp = []
         while i <= mid and j <= end:
+            comparisons += 1
             if arr[j] < arr[i]:
                 temp.append(arr[j])
                 j += 1
@@ -40,6 +43,7 @@ def merge_sort_steps(array):
         
         for k in range(start, end + 1):
             arr[k] = temp[k - start]
+            swaps += 1
             recorder.record(arr, [k])
                 
     def merge_sort(arr, start, end):
@@ -53,4 +57,4 @@ def merge_sort_steps(array):
      
     recorder.record(current, [], force=True)
     
-    return recorder.steps
+    return recorder.steps, comparisons, swaps

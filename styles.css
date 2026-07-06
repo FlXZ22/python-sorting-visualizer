@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+.title {
+    background: #2e2e2e;
+    font-family: "Press Start 2P", system-ui !important;
+    font-size: 24px !important;
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+}
+
+.title-info {
+    background-color: #38667f !important;
+    font-family: "Press Start 2P", system-ui !important;
+    font-size: 24px !important;
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+}
+
+.st-key-bubble button {
+    background-color: #6abc3a !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038,
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+
+.st-key-bubble button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
+
+.st-key-merge button {
+    background-color: #d83433 !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038,
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+
+.st-key-merge button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
+.st-key-generate button {
+    background-color: #38667f !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038, 
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+
+.st-key-generate button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
+.st-key-quick button {
+    background-color: #9f7db1 !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038, 
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+.st-key-quick button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
+
+.st-key-selection button {
+    background-color: #009688 !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038, 
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+.st-key-selection button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
+
+p, h1, h2, h3, label, button, input, li, ul {
+    font-family: 'Press Start 2P', system-ui !important;
+}
+
+.card {
+  width: auto;
+  background: #2e2e2e;
+  font-family: "Press Start 2P", system-ui !important;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+  overflow: hidden;
+}
+
+.card__title {
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgb(167, 159, 159);
+  font-size: 0.95rem;
+}
+
+.card__data {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  border-right: 1px solid rgb(203, 203, 203);
+  border-left: 1px solid rgb(203, 203, 203);
+  border-bottom: 1px solid rgb(203, 203, 203);
+}
+
+.card__right {
+  width: 60%;
+  border-right: 1px solid rgb(203, 203, 203);
+}
+
+.card__left {
+  width: 40%;
+  text-align: end;
+}
+
+.item {
+  padding: 3px 0;
+  background-color: white;
+}
+
+.card__right .item {
+  padding-left: 0.8em;
+}
+
+.card__left .item {
+  padding-right: 0.8em;
+}
+
+.item:nth-child(even) {
+  background: rgb(234, 235, 234);
+}
+
+.st-key-link button {
+    background-color: #753abc !important;
+    color: #fff !important;
+    padding: 15px 40px !important;
+    margin: 10px !important;
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', system-ui !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        0px 10px #00000038,
+        5px 5px #00000038,
+        -5px 5px #00000038,
+        inset 0px 5px #ffffff36 !important;
+    cursor: pointer !important;
+}
+
+.st-key-link button:active {
+    transform: translateY(5px);
+    box-shadow:
+        0px 5px black,
+        0px -5px black,
+        5px 0px black,
+        -5px 0px black,
+        inset 0px 5px #00000038 !important;
+}
