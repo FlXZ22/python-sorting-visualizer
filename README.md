@@ -8,8 +8,6 @@
   <a href="https://github.com/FlXZ22/python-sorting-visualizer">GitHub</a>
 </p>
 
-
-
 ## What it does
 
 Generates a random array, then animates it being sorted with bubble sort, merge sort, quick sort, or selection sort, so you can actually see how each algorithm moves through the data. Alongside the animation, it shows live stats on comparisons and swaps, so the difference between an O(n²) algorithm and an O(n log n) one is visible, not just theoretical.
