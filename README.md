@@ -8,16 +8,6 @@
   <a href="https://github.com/FlXZ22/python-sorting-visualizer">GitHub</a>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/PYTHON-000000?style=for-the-badge&labelColor=000000&color=ffffff&logoColor=ffffff"/>
-  <img src="https://img.shields.io/badge/STREAMLIT-000000?style=for-the-badge&labelColor=000000&color=ffffff"/>
-  <img src="https://img.shields.io/badge/PLOTLY-000000? style=for-the-badge&labelColor=000000&color=ffffff"/>
-</p>
-
-<p align="center">
-  <img src="img/sorting_bars.svg" alt="Sorting bars animation" width="100%"/>
-</p>
-
 ## What it does
 
 Generates a random array, then animates it being sorted with bubble sort, merge sort, quick sort, or selection sort, so you can actually see how each algorithm moves through the data. Alongside the animation, it shows live stats on comparisons and swaps, so the difference between an O(n²) algorithm and an O(n log n) one is visible, not just theoretical.
