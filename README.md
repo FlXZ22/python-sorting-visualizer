@@ -7,8 +7,10 @@
 </p>
 
 <p align="center">
-  <b><a href="https://python-sorting-visualizer.streamlit.app/">Live demo</a></b> · <b><a href="#demo-video">Video demo</a></b>
-</p>
+  <a href="https://python-sorting-visualizer.streamlit.app/"><img src="https://img.shields.io/badge/demo-live-brightgreen" alt="Live demo"/></a>
+  <a href="https://github.com/user-attachments/assets/cfd97cb9-4797-4f6d-8ec0-160b88038156"><img src="https://img.shields.io/badge/video-demo-blue" alt="Video demo"/></a>
+  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-yellow" alt="MIT License"/></a>
+</p>  
 
 ## What it does
 
@@ -34,13 +36,14 @@ I wrote each sorting algorithm as a function that takes an unsorted array and re
 For large arrays, recording every single step made the animation laggy, so I added a class in `utils.py` that only takes a snapshot every fixed interval instead, depending on which algorithm is running.
 
 ## File breakdown
+<img src="assets/file_structure.png" alt="Demo image" width="100%"/>
 
 - **main.py** - the core file. Imports the sorting functions, has the title and the input boxes for the number generator (min, max, count), with validation: error if min > max, error if count > max. Four buttons, one per algorithm, each one builds a graph plus a "Play" button. Also times sort speed versus animation length, and has an HTML table (design copied from a CSS library) for comparisons, swaps, n squared, n log. One more button links to the info page.
 - **bubble_sort.py, merge_sort.py, quick_sort.py, selection_sort.py** - each has one function, `*_sort_steps`, that returns the snapshot list for that algorithm.
-- **utils.py** - the class that builds the snapshot dictionaries and throttles them when count is large.
+- **utils.py** - the class that builds the snapshot dictionaries and throttles them when the count is large.
 - **requirements.txt** - libraries needed to run it.
-- **assets/** - the graphs explaining each algorithm, I made these in Canva.
-- **pages/** - `info.py`, the Streamlit page that explains how each algorithm works, you get there from a button in main.py.
+- **assets/** - the graphs explaining each algorithm; I made these in Canva.
+- **pages/** - `info.py`, the Streamlit page that explains how each algorithm works; you get there from a button in main.py.
 - **styles.css** - loaded by main.py and pages/info.py through `load_css`, reads the file into a `css` variable and injects it with `st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)`.
 - **.streamlit/** - `config.toml`, background color, font, other page settings.
 
@@ -48,11 +51,11 @@ For large arrays, recording every single step made the animation laggy, so I add
 
 ## Design choices
 
-I picked Streamlit because it was an easy first pick for me, I found it before I found Flask and other libraries.
+I picked Streamlit because it was an easy first pick for me. I found it before I found Flask and other libraries.
 
 I gave the program a retro style because I think it makes it look different from other sorting visualizers out there.
 
-The first version used a different library for static graph images, I switched to Plotly once I decided I wanted the graphs animated instead.
+The first version used a different library for static graph images; I switched to Plotly once I decided I wanted the graphs animated instead.
 
 For the snapshot list, I used a simple class to keep the code organized, and it also taught me how classes work in Python.
 
